@@ -1,6 +1,12 @@
+import os
+
 from django.db import models
 
 
-class Test_Task_Model(models.Model):
+class TestTaskModel(models.Model):
     text = models.TextField()
-    picture = models.TextField()
+    picture = models.ImageField(upload_to='images', null=True, default=None)
+
+    def delete(self):
+        os.remove(self.picture.path)
+        super().delete()
