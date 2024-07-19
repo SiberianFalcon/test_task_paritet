@@ -12,7 +12,3 @@ class TestTaskSerializer(serializers.ModelSerializer):
         fields = ("id", "text", "picture")
 
 
-
-
-
-
