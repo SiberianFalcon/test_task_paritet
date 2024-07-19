@@ -7,3 +7,6 @@ from api.serializers import TestTaskSerializer
 class TestTaskViewSet(viewsets.ModelViewSet):
     queryset = TestTaskModel.objects.all()
     serializer_class = TestTaskSerializer
+
+
+

@@ -9,4 +9,10 @@ class TestTaskSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = TestTaskModel
-        fields = ("text", "picture")
+        fields = ("id", "text", "picture")
+
+
+
+
+
+

@@ -1,11 +1,19 @@
 <template>
   <div>
-    <textarea id="random-id" cols="30" rows="10" placeholder="Введите текст" v-model="text"></textarea>
+    <textarea id="random-id" cols="30" rows="10"
+              placeholder="Введите текст" v-model="text">
+    </textarea>
     <input type="file" ref="file">
     <button @click="sentToBackend">отправить на бэк</button>
   </div>
-  <div class="app">
-    <button @click="getPosts">Получить посты</button>
+  <div v-if="posts.length > 0">
+    <div v-for="(post, index) in posts" :key="index">
+      <img :src="post.picture" alt="Post Image"/>
+      <p>{{ post.text + " " + post.id }}</p>
+      <p>
+        <button @click="deletePost"> Удалить пост {{ post.id }}</button>
+      </p>
+    </div>
   </div>
 </template>
 
@@ -14,28 +22,44 @@
 import axios from 'axios';
 
 export default {
+    data() {
+        return {
+            posts: [],
+            text: '',
+        };
+    },
+    mounted() {
+        this.getPosts();
+    },
     methods: {
         async getPosts() {
             try {
                 const response = await axios.get('http://127.0.0.1:8000/api/test-task/');
                 console.log(response)
+                this.posts = response.data; // Store all posts in the array
+            } catch (error) {
+                console.error(error);
+            }
+        },
+        async deletePost() {
+            try {
+                const response = await axios.delete('\'http://127.0.0.1:8000/api/test-task/')
             } catch (error) {
                 console.error(error)
             }
         },
         async sentToBackend() {
-            const file = this.$refs.file.files[0]; // Получаем выбранный файл
+            const file = this.$refs.file.files[0];
             const reader = new FileReader();
             reader.onload = e => {
-                const base64Data = reader.result; // Преобразуем файл в base64
-                // Отправляем данные на бэкенд
+                const base64Data = reader.result;
                 axios.post('http://127.0.0.1:8000/api/test-task/', {
-                    text: this.text, // Текст из textarea
-                    picture: base64Data // Данные изображения в формате base64
+                    text: this.text,
+                    picture: base64Data
                 });
             };
             const blob = new Blob([file], {type: file.type});
-            reader.readAsDataURL(blob); // Читаем файл как data URL
+            reader.readAsDataURL(blob);
         }
     }
 }
