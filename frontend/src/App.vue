@@ -26,7 +26,7 @@ export default {
         };
     },
     mounted() {
-        this.getPosts();
+        this.getPosts()
     },
     methods: {
         async getPosts() {
@@ -48,7 +48,7 @@ export default {
         },
         async sentToBackend() {
             const file = this.$refs.file.files[0];
-            const reader = new FileReader();
+            const reader = await new FileReader();
             reader.onload = e => {
                 const base64Data = reader.result;
                 axios.post('http://127.0.0.1:8000/api/test-task/', {
@@ -58,7 +58,6 @@ export default {
             };
             const blob = new Blob([file], {type: file.type});
             reader.readAsDataURL(blob);
-            await this.getPosts()
         }
     }
 }
