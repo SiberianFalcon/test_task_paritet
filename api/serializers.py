@@ -10,5 +10,3 @@ class TestTaskSerializer(serializers.ModelSerializer):
     class Meta:
         model = TestTaskModel
         fields = ("id", "text", "picture")
-
-

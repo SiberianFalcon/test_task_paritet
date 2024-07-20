@@ -10,12 +10,10 @@ DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:8080',
+]
 
-CORS_ORIGIN_ALLOW_ALL = True
-
-# CORS_ALLOWED_ORIGINS = [
-#     'http://localhost:8080',
-# ]
 CORS_URLS_REGEX = r'^/api/.*$'
 
 INSTALLED_APPS = [
@@ -94,6 +92,7 @@ USE_TZ = True
 STATIC_URL = "static/"
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
 MEDIA_URL = '/media/'
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
