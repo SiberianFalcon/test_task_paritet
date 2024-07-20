@@ -1,4 +1,4 @@
-![Static Badge](https://img.shields.io/badge/Python-gray) ![Static Badge](https://img.shields.io/badge/Django_Rest_Framework-red?style=flat)![Static Badge](https://img.shields.io/badge/Vue.Js-teal)
+![Static Badge](https://img.shields.io/badge/Python-gray)  ![Static Badge](https://img.shields.io/badge/Django_Rest_Framework-red?style=flat)  ![Static Badge](https://img.shields.io/badge/Vue.Js-teal)
 
 
 # Это тестовое задание для фирмы Paritet
