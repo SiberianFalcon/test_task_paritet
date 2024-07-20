@@ -4,15 +4,15 @@
       <textarea id="random-id" cols="80" rows="16"
                 placeholder="Введите текст" v-model="text">
     </textarea>
-      <input class="photo_button" type="file" ref="file">
-      <button class="post_button" @click="sentToBackend">отправить на бэк</button>
+      <input class="button" type="file" ref="file">
+      <button class="button" @click="sentToBackend">Опубликовать пост</button>
     </form>
       <div v-if="posts.length > 0">
     <div class="get_list" v-for="(post, index) in posts" :key="index">
-      <img :src="post.picture" alt="Post Image"/>
+      <img class="pictures" :src="post.picture" alt=""/>
       <p>{{ post.text }}</p>
       <p>
-        <button @click="deletePost(post.id)" id="del-button"> Удалить пост</button>
+        <button class="button" @click="deletePost(post.id)" id="del-button"> Удалить пост</button>
       </p>
     </div>
   </div>
@@ -74,33 +74,32 @@ export default {
 <style>
 .input {
     width: 60%;
-    /*margin: 10px;*/
-    padding-left: 430px;
+    margin: 10px;
+    padding-left: 330px;
 }
 form {
     display: flex;
     flex-direction: column;
 }
-.photo_button {
+.button {
     margin-top: 10px;
-    align-self: flex-start;
-    background: none;
-
-}
-.post_button {
-    margin-top: 10px;
+    padding: 10px 15px;
     align-self: center;
-    background: antiquewhite;
+    background: none;
+    color: teal;
+    border: 1px solid;
+
 }
 .app {
     margin: 20px;
     padding: 105px;
     border: 3px solid teal;
 }
-
+.pictures {
+    max-width: 100%;
+}
 .get_list {
     margin: 30px;
     padding: 15px;
-    border: 3px solid teal;
 }
 </style>
