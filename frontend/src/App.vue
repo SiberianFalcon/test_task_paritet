@@ -1,26 +1,19 @@
 <template>
   <div class="app">
     <form class="input">
-      <textarea id="random-id" cols="80" rows="16"
-                placeholder="Введите текст" v-model="text">
-    </textarea>
+      <textarea id="random-id" cols="80" rows="16" placeholder="Введите текст" v-model="text"></textarea>
       <input class="button" type="file" ref="file">
       <button class="button" @click="sentToBackend">Опубликовать пост</button>
     </form>
-      <div v-if="posts.length > 0">
-    <div class="get_list" v-for="(post, index) in posts" :key="index">
-      <img class="pictures" :src="post.picture" alt=""/>
-      <p>{{ post.text }}</p>
-      <p>
-        <button class="button" @click="deletePost(post.id)" id="del-button"> Удалить пост</button>
-      </p>
+    <div v-if="posts.length > 0">
+      <div class="get_list" v-for="(post, index) in posts" :key="index">
+        <img class="pictures" :src="post.picture" alt=""/>
+        <p>{{ post.text }}</p>
+        <p><button class="button" @click="deletePost(post.id)" id="del-button"> Удалить пост</button></p>
+      </div>
     </div>
   </div>
-
-  </div>
-
 </template>
-
 
 <script>
 import axios from 'axios';
@@ -72,14 +65,14 @@ export default {
 </script>
 
 <style>
-.input {
-    width: 60%;
-    margin: 10px;
-    padding-left: 330px;
-}
 form {
     display: flex;
     flex-direction: column;
+}
+.app {
+    margin: 20px;
+    padding: 105px;
+    border: 3px solid teal;
 }
 .button {
     margin-top: 10px;
@@ -88,18 +81,17 @@ form {
     background: none;
     color: teal;
     border: 1px solid;
-
-}
-.app {
-    margin: 20px;
-    padding: 105px;
-    border: 3px solid teal;
-}
-.pictures {
-    max-width: 100%;
 }
 .get_list {
     margin: 30px;
     padding: 15px;
+}
+.input {
+    width: 60%;
+    margin: 10px;
+    padding-left: 330px;
+}
+.pictures {
+    max-width: 100%;
 }
 </style>
