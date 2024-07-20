@@ -46,9 +46,9 @@ export default {
                 console.error(error)
             }
         },
-        async sentToBackend() {
+        sentToBackend() {
             const file = this.$refs.file.files[0];
-            const reader = await new FileReader();
+            const reader = new FileReader();
             reader.onload = e => {
                 const base64Data = reader.result;
                 axios.post('http://127.0.0.1:8000/api/test-task/', {
